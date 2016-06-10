@@ -19,6 +19,8 @@ class Map(Widget):
     name = None
     model = None
     filterform = None
+    zoom = 13
+    center = [0.01, 51.405]
     template_name = "django_querybuilder/map_widget.html"
 
     @staticmethod
@@ -61,6 +63,8 @@ class Map(Widget):
             'name': self.name,
             'endpoint': self.endpoint.get_url(),
             'params': json.dumps(self.params),
+            'zoom': self.zoom,
+            'center': self.center,
             'filter': self.filterform.filter_name if self.filterform is not None else "",
         }
         text = render_to_string(

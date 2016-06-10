@@ -20,6 +20,8 @@ var Map = (function() {
         this.endpoint = mapData.endpoint;
         this.params = mapData.params;
         var _this = this;
+        this.zoom = mapData.zoom;
+        this.center = mapData.center;
         new FilterForm(this.formID);
 
         $(function () {
@@ -115,8 +117,8 @@ Map.prototype = function() {
 
     function getLeafletConfig(osm, layerData) {
         return {
-            center: [0.01, 51.405],
-            zoom: 13,
+            center: this.center,
+            zoom: this.zoom,
             fullscreenControl: true,
             fullscreenOptions: {
                 position: 'topleft'
